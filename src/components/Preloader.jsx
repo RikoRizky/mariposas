@@ -1,4 +1,7 @@
 export function Preloader() {
+  // Mengambil base path dari vite.config.js secara otomatis
+  const baseUrl = import.meta.env.BASE_URL;
+
   return (
     <div id="preloader" className="wrapper">
       <div className="svg-container">
@@ -11,7 +14,8 @@ export function Preloader() {
           <rect width="1920" height="1080" fill="#ffffff" />
           <g className="animated-content">
             <image
-              href="/logobg.png"
+              /* Menggabungkan base path dengan nama file logo */
+              href={`${baseUrl}logobg.png`}
               x="520"
               y="340"
               width="450"
