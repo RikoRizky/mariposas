@@ -125,17 +125,33 @@ export function LandingPageContent() {
     <div id="landing-page-content" ref={landingRef}>
       <div className="page-wrap">
         <header className="page-header">
-          <nav>
-            <h1>Mariposas Tour</h1>
-            <ul>
-              <li>About Us</li>
-              <li>Contact Us</li>
-              <li ref={burgerRef} id="burger">
+          {/* --- NAVBAR MODERN BARU --- */}
+          <nav className="modern-nav">
+            <div className="nav-left">
+              <div className="nav-brand">
+                <img src="logobg.png" alt="Mariposas Logo" className="brand-logo" />
+                <div className="brand-divider"></div>
+                <div className="brand-text">
+                  <h1>MARIPOSAS TOUR</h1>
+                  <p>Indonesia</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="nav-center">
+              <a href="#">Discover</a>
+              <a href="#">Experience</a>
+              <a href="#">Destination</a>
+              <a href="#">Information</a>
+            </div>
+
+            <div className="nav-right">
+              <div ref={burgerRef} id="burger">
                 <span></span>
                 <span></span>
                 <span></span>
-              </li>
-            </ul>
+              </div>
+            </div>
           </nav>
 
           <main>
