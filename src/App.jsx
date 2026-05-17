@@ -1,44 +1,30 @@
 import gsap from "gsap";
-import { useLayoutEffect } from "react";
+import { useLayoutEffect, useState } from "react";
 import "../style.css";
 import "./preloader-flow.css";
 import "./App.css";
 import { Preloader } from "./components/Preloader.jsx";
 import { FlowImages } from "./components/FlowImages.jsx";
 import { LandingPageContent } from "./components/LandingPageContent.jsx";
+import { Navbar } from "./components/Navbar.jsx";
+import Destination from "./components/pages/Destination/Destination.jsx";
+import Tours from "./components/pages/Tours/Tours.jsx";
+import About from "./components/pages/About/About";
+import Contact from "./components/pages/Contact/Contact";
+import Footer from "./components/Footer.jsx";
+import "./styles/shared-sections.css";
 
 const FLOW_POSITIONS = [
-  { x: -0.8, y: -0.6 },
-  { x: 0.7, y: 0.4 },
-  { x: -0.5, y: 0.7 },
-  { x: 0.6, y: -0.5 },
-  { x: -0.8, y: 0.2 },
-  { x: 0.8, y: -0.3 },
-  { x: -0.6, y: -0.8 },
-  { x: 0.4, y: 0.6 },
-  { x: -0.7, y: 0.5 },
-  { x: 0.5, y: -0.7 },
-  { x: -0.4, y: -0.4 },
-  { x: 0.3, y: 0.8 },
-  { x: -0.8, y: 0.3 },
-  { x: 0.6, y: 0.2 },
-  { x: -0.2, y: -0.7 },
-  { x: 0.7, y: -0.6 },
-  { x: -0.5, y: 0.4 },
-  { x: 0.4, y: -0.4 },
-  { x: -0.6, y: 0.6 },
-  { x: 0.8, y: 0.5 },
-  { x: -0.3, y: -0.5 },
-  { x: 0.5, y: 0.3 },
-  { x: -0.7, y: -0.2 },
-  { x: 0.2, y: 0.7 },
-  { x: -0.4, y: 0.8 },
-  { x: 0.6, y: -0.8 },
-  { x: -0.8, y: 0.1 },
-  { x: 0, y: 0 },
+  { x: -0.8, y: -0.6 }, { x: 0.7, y: 0.4 }, { x: -0.5, y: 0.7 }, { x: 0.6, y: -0.5 },
+  { x: -0.8, y: 0.2 }, { x: 0.8, y: -0.3 }, { x: -0.6, y: -0.8 }, { x: 0.4, y: 0.6 },
+  { x: -0.7, y: 0.5 }, { x: 0.5, y: -0.7 }, { x: -0.4, y: -0.4 }, { x: 0.3, y: 0.8 },
+  { x: -0.8, y: 0.3 }, { x: 0.6, y: 0.2 }, { x: -0.2, y: -0.7 }, { x: 0.7, y: -0.6 },
+  { x: -0.5, y: 0.4 }, { x: 0.4, y: -0.4 }, { x: -0.6, y: 0.6 }, { x: 0.8, y: 0.5 },
+  { x: -0.3, y: -0.5 }, { x: 0.5, y: 0.3 }, { x: -0.7, y: -0.2 }, { x: 0.2, y: 0.7 },
+  { x: -0.4, y: 0.8 }, { x: 0.6, y: -0.8 }, { x: -0.8, y: 0.1 }, { x: 0, y: 0 },
 ];
 
-function runIntroSequence() {
+function runIntroSequence(onIntroComplete) {
   const master = gsap.timeline();
 
   master.to("#preloader", {
@@ -102,8 +88,18 @@ function runIntroSequence() {
       ease: "expo.out",
       startAt: { scale: 1.1, opacity: 0 },
       onStart: () => {
-        gsap.from("#landing-nav", { y: -80, opacity: 0, duration: 1.5, ease: "expo.out" });
-        gsap.from(".hero-reveal", {
+        // PERBAIKAN TARGET ANIMASI: 
+        // Mengubah '#landing-nav' menjadi '.modern-nav' agar sesuai dengan class komponen Anda
+        gsap.from(".modern-nav", {
+          y: -80,
+          opacity: 0,
+          duration: 1.5,
+          ease: "expo.out",
+          onComplete: () => {
+            gsap.set(".modern-nav", { clearProps: "transform,opacity,y" });
+          },
+        });
+        gsap.from(".hero-info", {
           y: 120,
           opacity: 0,
           duration: 1.8,
@@ -119,20 +115,29 @@ function runIntroSequence() {
     "-=1.2"
   );
 
-  flowTl.to(".flow", { display: "none" });
+  // PERBAIKAN KRITIS: Memastikan .flow benar-benar hilang dari susunan layar (tidak memblokir klik)
+  flowTl.set(".flow", { display: "none", pointerEvents: "none" });
+  flowTl.set("#destination", { visibility: "visible", opacity: 1 });
+  flowTl.call(() => {
+    if (typeof onIntroComplete === "function") {
+      onIntroComplete();
+    }
+  });
+  
   master.add(flowTl);
 }
 
 let introSequenceStarted = false;
 
 export default function App() {
+  const [showNavbar, setShowNavbar] = useState(false);
   useLayoutEffect(() => {
     if (introSequenceStarted) return;
 
     const onLoad = () => {
       if (introSequenceStarted) return;
       introSequenceStarted = true;
-      runIntroSequence();
+      runIntroSequence(() => setShowNavbar(true));
     };
 
     if (document.readyState === "complete") {
@@ -146,11 +151,29 @@ export default function App() {
     };
   }, []);
 
+  useLayoutEffect(() => {
+    if (showNavbar) {
+      document.body.style.overflow = "auto";
+    } else {
+      document.body.style.overflow = "hidden";
+    }
+
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [showNavbar]);
+
   return (
     <>
       <Preloader />
       <FlowImages />
+      <Navbar hidden={!showNavbar} />
       <LandingPageContent />
+      <About />
+      <Destination />
+      <Tours />
+      <Contact />
+      <Footer />
     </>
   );
 }
