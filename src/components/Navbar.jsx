@@ -3,6 +3,7 @@ import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { useCallback, useLayoutEffect, useRef, useState } from "react";
 import "./Navbar.css";
 
+
 gsap.registerPlugin(ScrollToPlugin);
 
 const MENU_DURATION = 0.75;
@@ -309,8 +310,8 @@ export function Navbar({ hidden = true }) {
           <a href="#tours" onClick={handleNavClick}>
             Tours
           </a>
-          <a href="#" onClick={handleNavClick}>
-            Blog
+          <a href="#testimoni" onClick={handleNavClick}>
+            Testimoni
           </a>
           <a href="#contact" onClick={handleNavClick}>
             Contact
@@ -366,8 +367,8 @@ export function Navbar({ hidden = true }) {
                   </a>
                 </li>
                 <li>
-                  <a href="#" onClick={handleNavClick}>
-                    Blog
+                  <a href="#testimoni" onClick={handleNavClick}>
+                    Testimoni
                   </a>
                 </li>
                 <li>
