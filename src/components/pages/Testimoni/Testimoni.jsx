@@ -172,12 +172,11 @@ export default function Testimoni() {
                 src={getDrivePreviewUrl(modalVideo.id, { autoplay: true })}
                 allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
                 allowFullScreen
+                frameBorder="0"
+                playsInline 
               />
             )}
-            <div
-              className="testimoni-drive-link-block"
-              aria-hidden="true"
-            />
+            <div className="testimoni-drive-link-block" aria-hidden="true" />
           </div>
           <div className="testimoni-modal-info">
             <h3 id="testimoni-modal-title">{modalVideo.title}</h3>
@@ -216,90 +215,88 @@ export default function Testimoni() {
             Anda adalah amanah terbesar kami.
           </p>
 
-        <div className="testimoni-filters" data-reveal>
-          <button
-            type="button"
-            className={`testimoni-filter-btn${activeCategory === "testi" ? " active" : ""}`}
-            onClick={() => setActiveCategory("testi")}
-          >
-            ✨ Testimoni Jemaah
-          </button>
-          <button
-            type="button"
-            className={`testimoni-filter-btn${activeCategory === "dokumen" ? " active" : ""}`}
-            onClick={() => setActiveCategory("dokumen")}
-          >
-            📸 Dokumentasi Kegiatan
-          </button>
-        </div>
+          <div className="testimoni-filters" data-reveal>
+            <button
+              type="button"
+              className={`testimoni-filter-btn${activeCategory === "testi" ? " active" : ""}`}
+              onClick={() => setActiveCategory("testi")}
+            >
+              ✨ Testimoni Jemaah
+            </button>
+            <button
+              type="button"
+              className={`testimoni-filter-btn${activeCategory === "dokumen" ? " active" : ""}`}
+              onClick={() => setActiveCategory("dokumen")}
+            >
+              📸 Dokumentasi Kegiatan
+            </button>
+          </div>
 
-        <p className="testimoni-count" data-reveal>
-          Menampilkan <strong>{visibleCount}</strong>
-          {hasMore && !showAll && (
-            <>
-              {" "}
-              dari <strong>{filteredVideos.length}</strong>
-            </>
-          )}{" "}
-          video · {CATEGORY_LABELS[activeCategory]}
-        </p>
+          <p className="testimoni-count" data-reveal>
+            Menampilkan <strong>{visibleCount}</strong>
+            {hasMore && !showAll && (
+              <>
+                {" "}
+                dari <strong>{filteredVideos.length}</strong>
+              </>
+            )}{" "}
+            video · {CATEGORY_LABELS[activeCategory]}
+          </p>
 
-        <div className="testimoni-grid" key={activeCategory}>
-          {displayedVideos.map((video, index) => (
-            <article
-              className="testimoni-card"
-              key={video.id}
-              style={{ "--card-i": index }}
+          <div className="testimoni-grid" key={activeCategory}>
+            {displayedVideos.map((video, index) => (
+              <article
+                className="testimoni-card"
+                key={video.id}
+                style={{ "--card-i": index }}
+              >
+                <button
+                  type="button"
+                  className={`testimoni-video-btn testimoni-video-btn--${video.category}`}
+                  onClick={() => openModal(video)}
+                  aria-label={`Putar video: ${video.title}`}
+                >
+                  <img
+                    src={getDriveThumbnail(video.id)}
+                    alt={video.title}
+                    className="testimoni-thumb"
+                    loading="lazy"
+                    onError={(e) => {
+                      e.currentTarget.src = FALLBACK_THUMBNAIL;
+                    }}
+                  />
+
+                  <div className="testimoni-play-overlay">
+                    <span className="testimoni-play-icon">
+                      <PlayIcon />
+                    </span>
+                    <span className="testimoni-play-hint">Putar Video</span>
+                  </div>
+
+                  <div className="testimoni-card-footer">
+                    <h4>{video.title}</h4>
+                    <p className="testimoni-card-desc">{video.desc}</p>
+                  </div>
+                </button>
+              </article>
+            ))}
+          </div>
+
+          {hasMore && (
+            <div
+              className="testimoni-show-more-wrap"
+              data-reveal
+              ref={showMoreWrapRef}
             >
               <button
                 type="button"
-                className={`testimoni-video-btn testimoni-video-btn--${video.category}`}
-                onClick={() => openModal(video)}
-                aria-label={`Putar video: ${video.title}`}
+                className="testimoni-show-more-btn"
+                onClick={handleToggleShowAll}
               >
-                <img
-                  src={getDriveThumbnail(video.id)}
-                  alt={video.title}
-                  className="testimoni-thumb"
-                  loading="lazy"
-                  onError={(e) => {
-                    e.currentTarget.src = FALLBACK_THUMBNAIL;
-                  }}
-                />
-
-                <div className="testimoni-play-overlay">
-                  <span className="testimoni-play-icon">
-                    <PlayIcon />
-                  </span>
-                  <span className="testimoni-play-hint">Putar Video</span>
-                </div>
-
-                <div className="testimoni-card-footer">
-                  <h4>{video.title}</h4>
-                  <p className="testimoni-card-desc">
-                    {video.desc}
-                  </p>
-                </div>
+                {showAll ? "Tampilkan lebih sedikit" : "Lihat selengkapnya"}
               </button>
-            </article>
-          ))}
-        </div>
-
-        {hasMore && (
-          <div
-            className="testimoni-show-more-wrap"
-            data-reveal
-            ref={showMoreWrapRef}
-          >
-            <button
-              type="button"
-              className="testimoni-show-more-btn"
-              onClick={handleToggleShowAll}
-            >
-              {showAll ? "Tampilkan lebih sedikit" : "Lihat selengkapnya"}
-            </button>
-          </div>
-        )}
+            </div>
+          )}
         </header>
       </div>
 

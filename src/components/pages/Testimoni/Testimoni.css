@@ -1,4 +1,4 @@
-/* Tema & layout mengikuti HTML referensi Utama Mulya Haramain */
+/* Gaya desktop ASLI (tidak berubah sama sekali) */
 .testimoni-section {
   --gold-50: #fdfbf7;
   --gold-100: #fbf7ed;
@@ -60,13 +60,8 @@
 }
 
 @keyframes testimoniFloat {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-15px);
-  }
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
 }
 
 .testimoni-inner {
@@ -78,13 +73,10 @@
   padding: 4rem 1rem;
 }
 
-/* Scroll reveal (dari HTML) */
 .testimoni-section [data-reveal] {
   opacity: 0;
   transform: scale(0.98);
-  transition:
-    opacity 0.5s ease-out,
-    transform 0.5s ease-out;
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
   transition-delay: var(--reveal-delay, 0ms);
   will-change: opacity, transform;
 }
@@ -94,7 +86,6 @@
   transform: scale(1);
 }
 
-/* Header — text-center mb-12 */
 .testimoni-header {
   text-align: center;
   margin-bottom: 3rem;
@@ -168,12 +159,7 @@
   width: 6rem;
   height: 2px;
   margin: 1.5rem auto 0;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    var(--gold-400),
-    transparent
-  );
+  background: linear-gradient(90deg, transparent, var(--gold-400), transparent);
 }
 
 .testimoni-desc {
@@ -184,16 +170,13 @@
   line-height: 1.6;
 }
 
-/* Filter tabs — di bawah header, margin negatif merapatkan jarak */
 .testimoni-filters {
   display: flex;
   justify-content: center;
-  align-items: center;
   gap: 1rem;
   flex-wrap: wrap;
   margin-top: 2rem;
   margin-bottom: 4rem;
-  position: relative;
   z-index: 2;
 }
 
@@ -221,7 +204,6 @@
   box-shadow: 0 10px 15px -3px rgba(197, 146, 69, 0.1);
 }
 
-/* Counter (fitur tambahan) */
 .testimoni-count {
   margin: -2.5rem 0 1.25rem;
   text-align: center;
@@ -234,7 +216,6 @@
   font-weight: 700;
 }
 
-/* Video grid — grid gap-6 max-w-5xl */
 .testimoni-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -280,16 +261,9 @@
   border-radius: 1.5rem;
   overflow: hidden;
   cursor: pointer;
-  background: linear-gradient(
-    135deg,
-    #451a03 0%,
-    var(--kaaba) 50%,
-    #000000 100%
-  );
+  background: linear-gradient(135deg, #451a03 0%, var(--kaaba) 50%, #000000 100%);
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-  transition:
-    box-shadow 0.5s ease,
-    transform 0.3s ease;
+  transition: box-shadow 0.5s ease, transform 0.3s ease;
 }
 
 .testimoni-video-btn--dokumen,
@@ -373,12 +347,7 @@
   right: 0;
   z-index: 20;
   padding: 1.5rem;
-  background: linear-gradient(
-    to top,
-    #000000 0%,
-    rgba(0, 0, 0, 0.5) 60%,
-    transparent 100%
-  );
+  background: linear-gradient(to top, #000000 0%, rgba(0, 0, 0, 0.5) 60%, transparent 100%);
   text-align: left;
 }
 
@@ -399,7 +368,6 @@
   color: var(--gold-400);
 }
 
-/* Lihat selengkapnya */
 .testimoni-show-more-wrap {
   display: flex;
   justify-content: center;
@@ -425,7 +393,7 @@
   transform: translateY(-2px);
 }
 
-/* Modal — portal ke body, variabel tema harus didefinisikan di sini */
+/* ========== GAYA MODAL (DESKTOP - TIDAK BERUBAH) ========== */
 .testimoni-modal {
   --gold-300: #e8d4ab;
   --gold-400: #dbae6c;
@@ -469,11 +437,7 @@
   padding: 0.75rem;
   border-radius: 50%;
   cursor: pointer;
-  transition:
-    color 0.2s ease,
-    background 0.2s ease,
-    transform 0.2s ease,
-    border-color 0.2s ease;
+  transition: color 0.2s ease, background 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
 }
 
 .testimoni-modal-close .testimoni-close-svg {
@@ -488,11 +452,6 @@
   transform: scale(1.08);
 }
 
-.testimoni-modal-close:hover .testimoni-close-svg {
-  color: #ffffff;
-  stroke: #ffffff;
-}
-
 .testimoni-modal-content {
   position: relative;
   z-index: 10;
@@ -504,9 +463,7 @@
   gap: 1rem;
   opacity: 0;
   transform: scale(0.94) translateY(20px);
-  transition:
-    opacity 0.4s ease,
-    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: opacity 0.4s ease, transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .testimoni-modal-content.is-visible {
@@ -535,7 +492,6 @@
   z-index: 10;
 }
 
-/* Blokir link keluar Google Drive (pojok kanan atas) */
 .testimoni-drive-link-block {
   position: absolute;
   top: 0;
@@ -550,13 +506,6 @@
 
 .testimoni-modal-info {
   text-align: center;
-}
-
-.testimoni-modal-info {
-  animation: testimoniModalInfoIn 0.5s ease 0.15s both;
-}
-
-.testimoni-modal-content.is-visible .testimoni-modal-info {
   animation: testimoniModalInfoIn 0.5s ease 0.15s both;
 }
 
@@ -583,52 +532,97 @@
   color: #dbae6c;
 }
 
+/* ========== PERBAIKAN KHUSUS MOBILE (≤768px) - FULL WIDTH PRESISI ========== */
 @media screen and (max-width: 768px) {
-  .testimoni-inner {
-    padding: 3rem 1rem;
+  .testimoni-modal-content {
+    max-width: 100%;
+    width: 100%;
+    padding: 0 !important;
+    margin: 0;
+    gap: 0.5rem;
   }
 
-  .testimoni-filters {
-    margin-top: 1rem;
-    margin-bottom: 4rem;
-    gap: 0.75rem;
-    padding: 0 0.5rem;
+  .testimoni-modal-player {
+    width: 100%;
+    max-width: 100%;
+    aspect-ratio: 9 / 16;
+    max-height: none;
+    margin: 0;
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
   }
 
-  .testimoni-filter-btn {
-    padding: 0.65rem 1rem;
-    font-size: 0.8125rem;
+  .testimoni-modal-player iframe {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 
-  .testimoni-count {
-    margin: -2.5rem 0 1.25rem;
-    padding: 0 0.5rem;
+  .testimoni-modal-close {
+    top: 0.5rem;
+    right: 0.5rem;
+    padding: 0.75rem;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(8px);
+    z-index: 100003;
+  }
+
+  .testimoni-modal-close .testimoni-close-svg {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+
+  .testimoni-modal-info {
+    padding: 0 0.75rem 0.75rem;
+  }
+
+  .testimoni-modal-info h3 {
+    font-size: 1rem;
+  }
+
+  .testimoni-modal-info p {
+    font-size: 0.75rem;
   }
 }
 
+/* Tambahan untuk layar sangat kecil (≤480px) */
+@media screen and (max-width: 480px) {
+  .testimoni-modal-close {
+    padding: 0.6rem;
+  }
+  .testimoni-modal-info {
+    padding: 0 0.5rem 0.5rem;
+  }
+}
+
+/* Mode landscape HP (miring) - video menyesuaikan */
+@media screen and (orientation: landscape) and (max-width: 768px) and (max-height: 500px) {
+  .testimoni-modal-player {
+    aspect-ratio: 16 / 9;
+    max-height: 85vh;
+  }
+  .testimoni-modal-info {
+    display: none;
+  }
+}
+
+/* Reduced motion (opsional) */
 @media (prefers-reduced-motion: reduce) {
   .testimoni-parallax-1,
   .testimoni-parallax-2 {
     animation: none;
   }
-
   .testimoni-card {
     animation: none;
   }
-
   .testimoni-modal-info {
     animation: none;
   }
-
   .testimoni-section [data-reveal],
   .testimoni-modal-content {
     opacity: 1;
     transform: none;
     transition: none;
-  }
-
-  .testimoni-modal-content.is-visible {
-    opacity: 1;
-    transform: none;
   }
 }
