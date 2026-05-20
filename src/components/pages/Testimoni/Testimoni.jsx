@@ -173,7 +173,7 @@ export default function Testimoni() {
                 allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
                 allowFullScreen
                 frameBorder="0"
-                playsInline 
+                playsInline
               />
             )}
             <div className="testimoni-drive-link-block" aria-hidden="true" />
