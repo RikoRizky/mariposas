@@ -548,10 +548,6 @@
   background: transparent;
 }
 
-.testimoni-mobile-controls-mask {
-  display: none;
-}
-
 .testimoni-modal-info {
   text-align: center;
 }
@@ -607,32 +603,6 @@
   .testimoni-count {
     margin: -2.5rem 0 1.25rem;
     padding: 0 0.5rem;
-  }
-
-  /* Sembunyikan kontrol bawaan player Drive hanya di mobile */
-  .testimoni-mobile-controls-mask {
-    position: absolute;
-    z-index: 30;
-    pointer-events: none;
-    display: block;
-  }
-
-  .testimoni-mobile-controls-mask--center {
-    left: 50%;
-    bottom: 3.8rem;
-    width: 78%;
-    height: 4.75rem;
-    transform: translateX(-50%);
-    border-radius: 1.25rem;
-    background: rgba(0, 0, 0, 0.85);
-  }
-
-  .testimoni-mobile-controls-mask--bottom {
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 3.25rem;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.96), rgba(0, 0, 0, 0.96));
   }
 }
 

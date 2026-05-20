@@ -175,14 +175,6 @@ export default function Testimoni() {
               />
             )}
             <div
-              className="testimoni-mobile-controls-mask testimoni-mobile-controls-mask--center"
-              aria-hidden="true"
-            />
-            <div
-              className="testimoni-mobile-controls-mask testimoni-mobile-controls-mask--bottom"
-              aria-hidden="true"
-            />
-            <div
               className="testimoni-drive-link-block"
               aria-hidden="true"
             />
