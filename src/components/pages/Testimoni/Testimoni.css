@@ -1,5 +1,5 @@
 /* ============================================================ */
-/* GAYA DESKTOP (ASLI, TIDAK BERUBAH)                          */
+/* GAYA DESKTOP (ASLI, TIDAK BERUBAH KECUALI BLOKIR LINK DRIVE) */
 /* ============================================================ */
 
 .testimoni-section {
@@ -396,7 +396,7 @@
   transform: translateY(-2px);
 }
 
-/* ========== GAYA MODAL (DESKTOP - TIDAK BERUBAH) ========== */
+/* ========== GAYA MODAL (DESKTOP) ========== */
 .testimoni-modal {
   --gold-300: #e8d4ab;
   --gold-400: #dbae6c;
@@ -495,6 +495,7 @@
   z-index: 10;
 }
 
+/* ========== BLOKIR TOMBOL LINK GOOGLE DRIVE (SEMUA LAYAR) ========== */
 .testimoni-drive-link-block {
   position: absolute;
   top: 0;
@@ -503,7 +504,7 @@
   height: 5rem;
   z-index: 40;
   cursor: default;
-  pointer-events: auto;
+  pointer-events: none; /* Mencegah klik */
   background: transparent;
 }
 
@@ -536,44 +537,32 @@
 }
 
 /* ============================================================ */
-/* PERBAIKAN KHUSUS MOBILE (≤768px) - SEMBUYIKAN TOMBOL PENGGANGGU */
+/* PERBAIKAN KHUSUS MOBILE (≤768px) - HILANGKAN TOMBOL PLAY OVERLAY */
 /* ============================================================ */
 
 @media screen and (max-width: 768px) {
   
-  /* 1. Sembunyikan teks "Putar Video" (testimoni-play-hint) */
-  .testimoni-play-hint {
-    display: none;
+  /* Hapus seluruh overlay play (icon + teks) di thumbnail */
+  .testimoni-play-overlay {
+    display: none !important;
   }
   
-  /* 2. Perkecil icon play agar tidak terlalu dominan */
-  .testimoni-play-icon {
-    width: 2.5rem;
-    height: 2.5rem;
-    margin-bottom: 0;
-  }
-  
-  .testimoni-play-svg {
-    width: 1rem;
-    height: 1rem;
-  }
-  
-  /* 3. Perkecil footer card (judul & deskripsi) */
+  /* Kecilkan footer card (judul & deskripsi) agar tidak mengganggu */
   .testimoni-card-footer {
-    padding: 0.75rem;
+    padding: 0.5rem;
   }
   
   .testimoni-card-footer h4 {
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     letter-spacing: 0.03em;
   }
   
   .testimoni-card-footer p {
-    font-size: 0.5625rem;
+    font-size: 0.5rem;
     margin-top: 0.125rem;
   }
   
-  /* 4. Modal: konten full lebar tanpa padding */
+  /* Modal: full lebar, tanpa padding */
   .testimoni-modal-content {
     max-width: 100%;
     width: 100%;
@@ -597,7 +586,7 @@
     object-fit: cover;
   }
   
-  /* 5. Tombol close modal lebih kecil & transparan */
+  /* Tombol close modal lebih kecil & transparan */
   .testimoni-modal-close {
     top: 0.5rem;
     right: 0.5rem;
@@ -613,13 +602,8 @@
     stroke: #ffffff;
   }
   
-  /* 6. Sembunyikan info video di modal agar tidak mengganggu */
+  /* Sembunyikan info video di modal agar tidak mengganggu */
   .testimoni-modal-info {
-    display: none;
-  }
-  
-  /* 7. Sembunyikan blok link drive */
-  .testimoni-drive-link-block {
     display: none;
   }
 }
@@ -633,11 +617,15 @@
   }
   
   .testimoni-card-footer {
-    padding: 0.5rem;
+    padding: 0.4rem;
   }
   
   .testimoni-card-footer h4 {
-    font-size: 0.7rem;
+    font-size: 0.65rem;
+  }
+  
+  .testimoni-card-footer p {
+    font-size: 0.45rem;
   }
 }
 
@@ -649,7 +637,7 @@
   }
 }
 
-/* Reduced motion - tetap pertahankan */
+/* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   .testimoni-parallax-1,
   .testimoni-parallax-2 {
