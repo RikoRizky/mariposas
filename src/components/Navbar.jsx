@@ -3,7 +3,6 @@ import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { useCallback, useLayoutEffect, useRef, useState } from "react";
 import "./Navbar.css";
 
-
 gsap.registerPlugin(ScrollToPlugin);
 
 const MENU_DURATION = 0.75;
