@@ -357,3 +357,82 @@
     align-items: flex-start;
   }
 }
+
+
+/* TAMBAHKAN SAJA DI Tours.css */
+
+#tours.tours-jump-highlight {
+  animation: toursHighlight 900ms ease both;
+}
+
+@keyframes toursHighlight {
+  0% {
+    transform: translateY(0);
+    box-shadow: none;
+  }
+  25% {
+    transform: translateY(-10px);
+  }
+  50% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.tour-price-table{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+  margin:18px 0;
+}
+
+button.tour-price-item{
+  border: 1px solid transparent;
+  background: #f8f8f8;
+  border-radius: 16px;
+  padding: 14px 10px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  color: #111;
+}
+
+button.tour-price-item:hover {
+  transform: translateY(-1px);
+  background: #edf2ff;
+  border-color: #c7d2fe;
+}
+
+button.tour-price-item.active {
+  background: #2563eb;
+  color: #ffffff;
+  border-color: #1d4ed8;
+}
+
+button.tour-price-item span{
+  display:block;
+  font-size:12px;
+  color:#bf0c0c;
+  margin-bottom:4px;
+}
+
+button.tour-price-item strong{
+  font-size:18px;
+  color:#646464;
+}
+
+.tour-price-item.active strong {
+  color: #ffffff;
+}
+
+
+
+@media (max-width:768px){
+
+  .tour-price-table{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+}
